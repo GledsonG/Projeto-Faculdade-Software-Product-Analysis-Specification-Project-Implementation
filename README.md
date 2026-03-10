@@ -1,5 +1,6 @@
 🧴 Sistema NikBelo Luxury - Gestão de Inventário
-Este repositório contém o código-fonte do sistema de gestão de produtos da NikBelo, uma solução desktop desenvolvida com foco em alta performance, segurança de dados e uma interface de usuário refinada. O projeto adota uma arquitetura em três camadas (Front-end, Back-end e Database), garantindo escalabilidade e facilidade de manutenção.
+Este repositório contém o código-fonte do sistema de gestão de produtos da NikBelo. 
+O projeto adota uma arquitetura em três camadas(Front-end, Back-end e Database), garantindo escalabilidade e facilidade de manutenção.
 
 
 
