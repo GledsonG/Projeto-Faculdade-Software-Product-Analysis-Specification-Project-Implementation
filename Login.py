@@ -4,7 +4,7 @@ from supabase import create_client
 
 ctk.set_appearance_mode("light") 
 COR_FUNDO = "#FFFFFF"     
-COR_DOURADO = "#D4AF37"   
+COR_DOURADO = "#FFC400"   
 COR_TEXTO = "#4A4A4A"     
 
 
@@ -70,7 +70,7 @@ def exibir_tela_cadastro():
 def exibir_menu_principal():
     limpar_tela() 
     
-    ctk.CTkLabel(janela, text="NikBelo", font=("Bodoni", 35, "bold"), text_color=COR_DOURADO).pack(pady=(50, 5))
+    ctk.CTkLabel(janela, text="Le'Prado", font=("Bodoni", 35, "bold"), text_color=COR_DOURADO).pack(pady=(50, 5))
     ctk.CTkLabel(janela, text="GESTÃO DE ESTOQUE", font=("Arial", 11), text_color="#A0A0A0").pack(pady=(0, 50))
 
     estilo_btn = {"width": 280, "height": 45, "fg_color": COR_DOURADO, "hover_color": "#B8860B", "text_color": "white", "font": ("Arial", 12, "bold")}
@@ -97,10 +97,10 @@ def realizar_login_gui():
 
 janela = ctk.CTk()
 janela.geometry("450x650") 
-janela.title("NikBelo Esthetic")
+janela.title("Le'Prado Esthetic")
 janela.configure(fg_color=COR_FUNDO)
 
-ctk.CTkLabel(janela, text="NIKBELO", font=("Bodoni", 30, "bold"), text_color=COR_DOURADO).pack(pady=(80, 40))
+ctk.CTkLabel(janela, text="Le Prado Luxury", font=("Georgia", 30, "bold"), text_color=COR_DOURADO).pack(pady=(80, 40))
 
 entry_email = ctk.CTkEntry(janela, placeholder_text="Usuário", width=320, height=45, border_color=COR_DOURADO, fg_color="#FDFDFD")
 entry_email.pack(pady=10)
@@ -111,7 +111,7 @@ entry_senha.pack(pady=10)
 label_aviso = ctk.CTkLabel(janela, text="")
 label_aviso.pack(pady=10)
 
-ctk.CTkButton(janela, text="ACESSAR PAINEL", fg_color=COR_DOURADO, hover_color="#B8860B", text_color="white", 
+ctk.CTkButton(janela, text="ACESSAR PAINEL", fg_color=COR_DOURADO, hover_color="#ECAF12", text_color="white", 
               width=320, height=45, font=("Arial", 13, "bold"), command=realizar_login_gui).pack(pady=20)
 
 janela.mainloop()
