@@ -97,10 +97,10 @@ def realizar_login_gui():
 
 janela = ctk.CTk()
 janela.geometry("450x650") 
-janela.title("Le'Prado Esthetic")
+janela.title("Le'Prado")
 janela.configure(fg_color=COR_FUNDO)
 
-ctk.CTkLabel(janela, text="Le Prado Luxury", font=("Georgia", 30, "bold"), text_color=COR_DOURADO).pack(pady=(80, 40))
+ctk.CTkLabel(janela, text="Le'Prado", font=("Georgia", 30, "bold"), text_color=COR_DOURADO).pack(pady=(80, 40))
 
 entry_email = ctk.CTkEntry(janela, placeholder_text="Usuário", width=320, height=45, border_color=COR_DOURADO, fg_color="#FDFDFD")
 entry_email.pack(pady=10)
