@@ -1,4 +1,4 @@
-# 🧴 Sistema NikBelo Luxury - Gestão de Inventário
+# 🧴 Sistema Le' Prado - Gestão de Inventário
 
 Este repositório contém o código-fonte do sistema de gestão de produtos da **NikBelo*. O projeto adota uma arquitetura em **três camadas** (Front-end, Back-end e Database).
 
