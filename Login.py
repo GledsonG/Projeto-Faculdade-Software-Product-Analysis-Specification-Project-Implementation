@@ -12,6 +12,44 @@ url = "https://dlmjmugouocyhspopdsb.supabase.co"
 key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsbWptdWdvdW9jeWhzcG9wZHNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzUwNjMsImV4cCI6MjA4NzU1MTA2M30.gblvuBxGpcX0OUwWm7I-9mFwywa31vL0jW_5B0sSlkc"
 supabase = create_client(url, key)
 
+def exibir_estoque():
+    limpar_tela()
+    
+    ctk.CTkLabel(janela, text="ESTOQUE ATUAL", font=("Bodoni", 22, "bold"), text_color=COR_DOURADO).pack(pady=20)
+
+    
+    frame_lista = ctk.CTkScrollableFrame(janela, width=400, height=400, fg_color="transparent")
+    frame_lista.pack(pady=10, padx=20)
+
+    try:
+        resposta = supabase.table("produtos").select("*").execute()
+        for item in resposta.data:
+          
+            card = ctk.CTkFrame(frame_lista, fg_color="#F9F9F9", corner_radius=8, border_width=1, border_color="#E0E0E0")
+            card.pack(fill="x", pady=5, padx=5)
+
+          
+            info = f"{item['nome']} - {item['marca']}\nR$ {item['preco']:.2f}"
+            ctk.CTkLabel(card, text=info, font=("Arial", 12), justify="left", text_color=COR_TEXTO).pack(side="left", padx=15, pady=10)
+
+           
+            btn_del = ctk.CTkButton(card, text="🗑", width=30, fg_color="#FF4C4C", hover_color="#C0392B",
+                                    command=lambda id_prod=item['id']: deletar_e_atualizar(id_prod))
+            btn_del.pack(side="right", padx=10)
+
+    except Exception as e:
+        ctk.CTkLabel(frame_lista, text="Erro ao carregar dados").pack()
+
+    ctk.CTkButton(janela, text="VOLTAR", fg_color="transparent", text_color=COR_DOURADO, border_width=1, border_color=COR_DOURADO,
+                  width=320, command=exibir_menu_principal).pack(pady=20)
+                  
+def deletar_e_atualizar(id_prod):
+    try:
+        supabase.table("produtos").delete().eq("id", id_prod).execute()
+        exibir_estoque() 
+    except Exception as e:
+        print(f"Erro ao deletar: {e}")
+
 
 def limpar_tela():
     """Remove todos os elementos da janela atual para desenhar a próxima"""
@@ -75,9 +113,9 @@ def exibir_menu_principal():
 
     estilo_btn = {"width": 280, "height": 45, "fg_color": COR_DOURADO, "hover_color": "#B8860B", "text_color": "white", "font": ("Arial", 12, "bold")}
 
-    ctk.CTkButton(janela, text="VER ESTOQUE", **estilo_btn).pack(pady=10)
+    ctk.CTkButton(janela, text="VER ESTOQUE", command=exibir_estoque, **estilo_btn).pack(pady=10)
+    
     ctk.CTkButton(janela, text="CADASTRAR PRODUTO", command=exibir_tela_cadastro, **estilo_btn).pack(pady=10)
-    ctk.CTkButton(janela, text="EXCLUIR PRODUTO", **estilo_btn).pack(pady=10)
     
     ctk.CTkButton(janela, text="SAIR DO SISTEMA", fg_color="#F2F2F2", text_color="#7F7F7F", width=280, command=janela.quit).pack(pady=40)
 
